@@ -10,7 +10,7 @@ namespace JeuDeLaVieTxt
     public class Grid
     {
         private int _n;
-        public int n {get {return _n;} set { _n = value; } }
+        public int n { get { return _n; } set { _n = value; } }
         Cell[,] TabCells;
 
         public Grid(int nbCells, List<Coords> AliveCellsCoords)
@@ -21,13 +21,13 @@ namespace JeuDeLaVieTxt
             {
                 for (int j = 0; j < n; j++)
                 {
-                    if (AliveCellsCoords.Contains(new Coords(i,j)) )
+                    if (AliveCellsCoords.Contains(new Coords(i, j)))
                     {
-                        TabCells[i,j] = new Cell(true);
+                        TabCells[i, j] = new Cell(true);
                     }
                     else
                     {
-                        TabCells[i,j] = new Cell(false);
+                        TabCells[i, j] = new Cell(false);
                     }
                 }
             }
@@ -35,7 +35,17 @@ namespace JeuDeLaVieTxt
 
         public int getNbALiveNeighboor(int i, int j)
         {
-            
+            int[] dx = { -1, -1, -1, 0, 0, 1, 1, 1 };
+            int[] dy = { -1, 0, 1, -1, 1, -1, 0, 1 };
+            int aliveCount = 0;
+            for (int k = 0; k < 8; k++)
+            {
+                int ni = i + dx[k];
+                int nj = j + dy[k];
+            }
+
+
+            return aliveCount;
         }
     }
 }
