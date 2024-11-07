@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -20,7 +21,25 @@ namespace JeuDeLaVieTxt
             {
                 for (int j = 0; j < n; j++)
                 {
-                    
+                    if (AliveCellsCoords.Contains(new Coords(i,j)) )
+                    {
+                        TabCells[i,j] = new Cell(true);
+                    }
+                    else
+                    {
+                        TabCells[i,j] = new Cell(false);
+                    }
+                }
+            }
+        }
+
+        public int getNbALiveNeighboor(int i, int j)
+        {
+            for (i = 0; i < n; i++)
+            {
+                for (j=0; j < n; j++)
+                {
+
                 }
             }
         }
