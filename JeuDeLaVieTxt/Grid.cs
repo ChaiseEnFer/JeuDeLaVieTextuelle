@@ -33,7 +33,7 @@ namespace JeuDeLaVieTxt
             }
         }
 
-        public int getNbALiveNeighboor(int i, int j)
+        public int getNbAliveNeighboor(int i, int j)
         {
             int[] dx = { -1, -1, -1, 0, 0, 1, 1, 1 };
             int[] dy = { -1, 0, 1, -1, 1, -1, 0, 1 };
@@ -105,5 +105,55 @@ namespace JeuDeLaVieTxt
             Console.WriteLine(ToDisplay);
         }
 
+        public void DisplayCoolGrid(object? sender, EventArgs e)
+        {
+            for (var y = 0; y < n; y++)
+            {
+                for (int x = 0; x < n; x++)
+                {
+                    if (TabCells[y, x].isAlive)
+                    {
+                        Console.Write("██");
+                    }
+                    else
+                    {
+                        Console.Write("  ");
+                    }
+                }
+                Console.Write("\n");
+            }
+        }
+
+        public void UpdateGrid()
+        {
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < n; j++)
+                {
+                    int aliveNeighbors = getNbAliveNeighboor(i, j);
+                    if (TabCells[i, j].isAlive)
+                    {
+                        // Une cellule vivante reste en vie si elle a 2 ou 3 voisins vivants
+                        TabCells[i, j].nextState = (aliveNeighbors == 2 || aliveNeighbors == 3);
+                    }
+                    else
+                    {
+                        // Une cellule morte devient vivante si elle a exactement 3 voisins vivants
+                        TabCells[i, j].nextState = (aliveNeighbors == 3);
+                    }
+                }
+            }
+
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < n; j++)
+                {
+                    TabCells[i, j].isAlive = TabCells[i, j].nextState;
+                }
+            }
+        }
     }
 }
+
+
+//dans mon constructeur de game je mets un bool qui dis coolgrid true soit false après, je fais un delegate event et je bind coolgrid ou dsgrid
