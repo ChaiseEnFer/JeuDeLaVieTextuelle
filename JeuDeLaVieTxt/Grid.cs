@@ -57,6 +57,52 @@ namespace JeuDeLaVieTxt
         public List<Coords> getCoordsCellsAlive()
         {
 
+            List<Coords> coords = new List<Coords>();
+            for (int k = 0; k < n; k++)
+            {
+                for (int j = 0; j < n; j++)
+                {
+                    if (TabCells[k, j].isAlive)
+                    {
+                        coords.Add(new Coords(k, j));
+                    }
+                }
+                
+            }
+            return coords;
+        }
+
+        public void DisplayGrid()
+        {
+            string ToDisplay = "";
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < n; j++)
+                {
+                    ToDisplay += "+---";
+                }
+                ToDisplay += "+\n";
+
+                for (int j = 0; j < n; j++)
+                {
+                    if (TabCells[i, j].isAlive)
+                    {
+                        ToDisplay += "| X ";
+                    }
+                    else
+                    {
+                        ToDisplay += "|   ";
+                    }
+                }
+                ToDisplay += "|\n";
+            }
+            for (int j = 0; j < n; j++)
+            {
+                ToDisplay += "+---";
+            }
+            ToDisplay += "+\n";
+
+            Console.WriteLine(ToDisplay);
         }
 
     }
