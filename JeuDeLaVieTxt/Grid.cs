@@ -42,10 +42,22 @@ namespace JeuDeLaVieTxt
             {
                 int ni = i + dx[k];
                 int nj = j + dy[k];
+
+                if(ni >= 0 && ni <n && nj >= 0 && nj < n)
+                {
+                    if (TabCells[ni, nj].isAlive)
+                    {
+                        aliveCount++;
+                    }
+                }
             }
-
-
             return aliveCount;
         }
+
+        public List<Coords> getCoordsCellsAlive()
+        {
+
+        }
+
     }
 }
