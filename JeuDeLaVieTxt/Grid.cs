@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace JeuDeLaVieTxt
 {
     public class Grid
@@ -72,7 +66,7 @@ namespace JeuDeLaVieTxt
             return coords;
         }
 
-        public void DisplayGrid()
+        public void DisplayGrid(object? sender, EventArgs e)
         {
             string ToDisplay = "";
             for (int i = 0; i < n; i++)
@@ -135,6 +129,7 @@ namespace JeuDeLaVieTxt
                     {
                         // Une cellule vivante reste en vie si elle a 2 ou 3 voisins vivants
                         TabCells[i, j].nextState = (aliveNeighbors == 2 || aliveNeighbors == 3);
+
                     }
                     else
                     {
